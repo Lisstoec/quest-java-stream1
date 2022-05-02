@@ -1,5 +1,4 @@
 import java.util.*;
-import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class Shield {
@@ -20,6 +19,10 @@ public class Shield {
         List<Hero> elders;
         // TODO 1 : filter heroes in order to found heroes older than 59
 
+        elders = heroes.stream()
+            .filter(heroAge -> heroAge.getAge() > 59)
+            .collect(Collectors.toList());
+
         System.out.println("\nElders:");
         for (Hero elder : elders) {
             System.out.println(elder.getName());
@@ -27,6 +30,10 @@ public class Shield {
 
         List<Hero> intolerants;
         // TODO 2 : filter heroes in order to found heroes that are gluten intolerants
+
+        intolerants = heroes.stream()
+            .filter(intolerantHero -> intolerantHero.isGlutenIntolerant() == true)
+            .collect(Collectors.toList());
 
         System.out.println("\nGluten intolerants:");
         for (Hero intolerant : intolerants) {
